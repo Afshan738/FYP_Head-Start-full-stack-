@@ -8,7 +8,7 @@ This project is in its very early stages of development. The current version onl
 
 ### What's Included in this Initial Setup:
 
-*   **Database Schema:** The complete SQL script (`database_schema.sql`) to create the PostgreSQL database structure. This includes the tables for:
+*   **Database Schema:** The complete SQL script (`Dynamic_Portfolio.sql`) to create the PostgreSQL database structure. This includes the tables for:
     *   Projects
     *   Skills
     *   Education
