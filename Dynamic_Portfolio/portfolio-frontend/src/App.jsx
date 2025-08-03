@@ -98,7 +98,7 @@ function Dashboard({ token, onLogout }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Afshan ${token}`,
         },
         body: JSON.stringify({ title, description }),
       });
