@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Education = require("../models/Education");
+const { protect } = require("../middleware/authMiddleware");
 
 router.get("/", async (req, res) => {
   try {
@@ -10,7 +11,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-router.post("/", async (req, res) => {
+router.post("/", protect, async (req, res) => {
   try {
     const newEducation = new Education(req.body);
     const neweducation = await newEducation.save();
@@ -20,7 +21,7 @@ router.post("/", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-router.put("/:id", async (req, res) => {
+router.put("/:id", protect, async (req, res) => {
   try {
     const updatedEducation = await Education.findByIdAndUpdate(
       req.params.id,
@@ -33,7 +34,7 @@ router.put("/:id", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", protect, async (req, res) => {
   try {
     await Education.findByIdAndDelete(req.params.id);
     res.json({ msg: "Education deleted" });

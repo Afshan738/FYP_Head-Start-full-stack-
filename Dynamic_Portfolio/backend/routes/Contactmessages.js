@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const ContactMessage = require("../models/ContactMessage");
 const { body, validationResult } = require("express-validator");
+const { protect } = require("../middleware/authMiddleware");
 
-router.get("/", async (req, res) => {
+router.get("/", protect, async (req, res) => {
   try {
     const contactMessages = await ContactMessage.find().sort({ createdAt: -1 });
     res.json(contactMessages);
@@ -36,7 +37,7 @@ router.post(
   }
 );
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", protect, async (req, res) => {
   try {
     await ContactMessage.findByIdAndDelete(req.params.id);
     res.json({ msg: "Contact message deleted" });

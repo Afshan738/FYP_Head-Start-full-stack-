@@ -1,42 +1,181 @@
+:root {
+  --font-heading: "Syne", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --color-bg: #0a0a1a;
+  --color-text: #e0e0e0;
+  --color-primary: #00aaff;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-error: #ff4757;
+  --color-success: #2ed573;
+}
+
+html,
+body,
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  /* overflow: hidden; */
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    var(--color-primary) 0%,
+    rgba(10, 10, 26, 0) 60%
+  );
+  opacity: 0.3;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+#root {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: #ffffff;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+hr {
+  border: none;
+  border-top: 1px solid var(--color-glass-border);
+  margin: 2rem 0;
 }
 
-.card {
-  padding: 2em;
+form,
+.dashboard-content {
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 2.5rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  margin-top: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.read-the-docs {
-  color: #888;
+form div {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 8px;
+  color: var(--color-text);
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.5);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  font-family: var(--font-heading);
+  width: 100%;
+  padding: 0.8rem 2rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 50px;
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+  box-shadow: 0 0 20px var(--color-primary);
+}
+
+.dashboard-content > button {
+  margin-bottom: 1rem;
+  background-color: #dc2626;
+  border-color: #dc2626;
+}
+
+.dashboard-content > button:hover {
+  background-color: transparent;
+  color: #dc2626;
+  box-shadow: 0 0 20px #dc2626;
+}
+
+p {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  word-wrap: break-word;
+}
+
+p[style*="color: red"] {
+  background-color: rgba(255, 71, 87, 0.1);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+form + p {
+  background-color: rgba(46, 213, 115, 0.1);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
 }

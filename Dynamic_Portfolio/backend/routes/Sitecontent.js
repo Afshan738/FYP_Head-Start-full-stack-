@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const SiteContent = require("../models/SiteContent");
+const { protect } = require("../middleware/authMiddleware");
 
 router.get("/", async (req, res) => {
   try {
@@ -17,7 +18,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", protect, async (req, res) => {
   try {
     const existingContent = await SiteContent.findOne();
     if (existingContent) {
@@ -34,7 +35,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/", async (req, res) => {
+router.put("/", protect, async (req, res) => {
   try {
     const updatedContent = await SiteContent.findOneAndUpdate({}, req.body, {
       new: true,
@@ -51,7 +52,7 @@ router.put("/", async (req, res) => {
   }
 });
 
-router.delete("/", async (req, res) => {
+router.delete("/", protect, async (req, res) => {
   try {
     const deletedContent = await SiteContent.findOneAndDelete({});
     if (!deletedContent) {

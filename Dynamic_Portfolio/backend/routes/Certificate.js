@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Certificate = require("../models/Certificate");
+const { protect } = require("../middleware/authMiddleware");
+
 router.get("/", async (req, res) => {
   try {
     const certificates = await Certificate.find().sort({ createdAt: -1 });
@@ -10,7 +12,7 @@ router.get("/", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-router.post("/", async (req, res) => {
+router.post("/", protect, async (req, res) => {
   try {
     const newCertificate = new Certificate(req.body);
     const savedCertificate = await newCertificate.save();
@@ -20,7 +22,7 @@ router.post("/", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-router.put("/:id", async (req, res) => {
+router.put("/:id", protect, async (req, res) => {
   try {
     const updatedCertificate = await Certificate.findByIdAndUpdate(
       req.params.id,
@@ -33,7 +35,7 @@ router.put("/:id", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", protect, async (req, res) => {
   try {
     await Certificate.findByIdAndDelete(req.params.id);
     res.json({ msg: "Certificate deleted" });
