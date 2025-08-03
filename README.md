@@ -4,26 +4,24 @@ This repository contains the source code for a dynamic personal portfolio websit
 
 ## Current Status
 
-The backend for this project is largely complete. All the necessary APIs for managing content have been built and tested. The database is hosted on MongoDB Atlas. The next major phase is the development of the frontend.
+The backend for this project is feature-complete and secure. All APIs and the core authentication system have been built and tested. The database is hosted on MongoDB Atlas. The next major phase is the development of the frontend.
 
 ### What's Complete:
 
-*   **Database:** A NoSQL database is fully designed and hosted on **MongoDB Atlas**. The schemas for all data collections are defined using Mongoose. This includes collections for:
-    *   Projects
-    *   Skills
-    *   Education
-    *   Certificates
-    *   Admin Users
-    *   Contact Messages
-    *   Site Content
+*   **Database:** A NoSQL database is fully designed and hosted on **MongoDB Atlas**. All data schemas are defined using Mongoose.
 
-*   **Backend API:** A RESTful API built with **Node.js** and **Express.js** is fully functional. It handles all Create, Read, Update, and Delete (CRUD) operations for the database content and has been tested with Postman.
+*   **Backend API:** A RESTful API built with **Node.js** and **Express.js** is fully functional. It handles all Create, Read, Update, and Delete (CRUD) operations for the database content.
+
+*   **Authentication & Authorization:** A complete, secure authentication system has been implemented:
+    *   **Password Hashing:** Admin passwords are securely hashed using **bcrypt.js** before being stored in the database.
+    *   **JWT Authentication:** A `POST /api/admin/login` endpoint validates credentials and issues a **JSON Web Token (JWT)**.
+    *   **Route Protection:** A custom middleware protects all sensitive CUD (Create, Update, Delete) routes, requiring a valid JWT for access.
 
 ## The Vision & Technology Stack
 
-The final application will be built using the **MERN stack**:
+The final application will be built using the **MERN stack** with a focus on security and modern practices:
 
-*   **Backend:** Node.js, Express.js
+*   **Backend:** Node.js, Express.js, JWT, bcrypt.js
 *   **Frontend:** React.js
 *   **Database:** MongoDB (hosted on MongoDB Atlas)
 
@@ -32,9 +30,9 @@ The final application will be built using the **MERN stack**:
 The next steps in the development process are:
 
 1.  **Frontend Development (In Progress):**
-    *   **Public Portfolio UI:** Design and build the public-facing portfolio website that fetches and displays the content from the API.
-    *   **Admin Dashboard UI:** Create a secure frontend interface for the admin panel where content can be managed using the existing APIs.
-2.  **Authentication:** Implement JWT (JSON Web Token) authentication for the admin login and secure the API endpoints.
-3.  **Deployment:** Deploy the backend and frontend to a live cloud environment.
+    *   **Public Portfolio UI:** Design and build the public-facing portfolio website that fetches and displays the content from the public API endpoints.
+    *   **Admin Dashboard UI:** Create a secure frontend interface for the admin panel. This will include a login page and dashboards to manage all content using the protected APIs.
+2.  **Deployment:** Deploy the backend and frontend to a live cloud environment.
+3.  **(Future) CI/CD Pipeline:** Implement an automated pipeline using a tool like GitHub Actions to build, test, and deploy the application.
 
-*This README file will be updated as the project progresses.
+*This README file will be updated as the project progresses.*
