@@ -1,5 +1,3 @@
-// seedAdmin.js (The Final, Most Secure Version)
-
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const Admin = require("./models/Admin");
