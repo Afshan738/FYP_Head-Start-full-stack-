@@ -16,7 +16,7 @@ function Hero() {
             I'm a BS(IT) student with a deep focus on the MERN stack. My passion is building fast, scalable, and dynamic web applications that provide a great user experience.
           </p>
           <div className="hero-buttons">
-            <a href="Afshan.pdf" download className="cta-button primary">Download CV</a>
+            <a href="resume_afshan_qasim.pdf" download className="cta-button primary">Download CV</a>
             <a href="#contactus" className="cta-button secondary">Contact</a>
           </div>
           <div className="hero-socials">
