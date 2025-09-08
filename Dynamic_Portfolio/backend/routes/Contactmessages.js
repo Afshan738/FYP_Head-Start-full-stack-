@@ -17,9 +17,20 @@ router.get("/", protect, async (req, res) => {
 router.post(
   "/",
   [
-    body("name").trim().notEmpty().escape(),
-    body("email").isEmail().normalizeEmail(),
-    body("message").trim().notEmpty().escape(),
+    body("senderName")
+      .trim()
+      .notEmpty()
+      .withMessage("Name is required.")
+      .escape(),
+    body("senderEmail")
+      .isEmail()
+      .withMessage("Please provide a valid email.")
+      .normalizeEmail(),
+    body("messageBody")
+      .trim()
+      .notEmpty()
+      .withMessage("Message cannot be empty.")
+      .escape(),
   ],
   async (req, res) => {
     const errors = validationResult(req);

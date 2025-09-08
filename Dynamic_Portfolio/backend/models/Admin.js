@@ -13,7 +13,8 @@ const adminSchema = new mongoose.Schema({
   },
 });
 
-//🙄here  i am using the mongoose hook which is pre.....so ,we use this becasue ....we can tell the database
+//😴here  i am using the mongoose hook which is pre.....so ,we use this becasue
+// ....we can tell the database
 // that it has to hash the password before saving to the database .......
 adminSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {

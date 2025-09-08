@@ -19,6 +19,7 @@ app.use("/api/education", require("./routes/Education"));
 app.use("/api/certificates", require("./routes/Certificate"));
 app.use("/api/Sitecontent", require("./routes/Sitecontent"));
 app.use("/api/admin", require("./routes/admin"));
+app.use("/api/services", require("./routes/Service"));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
